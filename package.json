@@ -1,0 +1,14 @@
+{
+  "name": "dummy",
+  "version": "1.0.0",
+  "description": "REST API DEV",
+  "main": "server.js",
+  "scripts": {
+    "create:json": "node json.js > dist/dummy.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
+}
