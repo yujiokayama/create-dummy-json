@@ -1,23 +1,21 @@
 /**
- * 使わなくてもよい
+ * faker.js
  */
 var faker = require("faker");
-var db = [];
-var dlStatus = ["01", "02", "03"];
+// faker.locale = "ja";
+
+var db = {
+  members: [],
+};
 
 /**
  * JSONを生成する
  */
 for (var i = 0; i < 100; ++i) {
-  var randomDay = getRandomYmd("2020/02/01", "2020/4/20");
-  db.push({
-    cooperationDate: `${randomDay} 11:11:11`,
-    recordDivision: `${Math.floor(Math.random() * 2)}`,
-    dlStatus: `${dlStatus[Math.floor(Math.random() * dlStatus.length)]}`,
-    imageId: `${randomDay.split("/").join("")}11111100`,
-    createdDate: `${randomDay}`,
-    dataReporPath: "/xxxx/yyyy",
-    byteSize: `${Math.floor(Math.random() * 99999)}`
+  db.members.push({
+    id: i + 1,
+    name: faker.name.findName(),
+    age: faker.random.number(100)
   });
 }
 
@@ -39,12 +37,12 @@ function getRandomYmd(fromYmd, toYmd) {
 /**
  * ソート
  */
-var result = Array.from(db);
-result.sort(function (a, b) {
-  return new Date(b.cooperationDate) - new Date(a.cooperationDate);
-});
+// var result = Array.from(db);
+// result.sort(function (a, b) {
+//   return new Date(b.cooperationDate) - new Date(a.cooperationDate);
+// });
 
 /**
  * スペース4文字でインデント
  */
-console.log(JSON.stringify(result, undefined, 4));
+console.log(JSON.stringify(db, undefined, 4));
